@@ -20,6 +20,7 @@ import { BiUserCircle } from "react-icons/bi";
 import gLuck from "../../assets/11.png";
 import nt1 from "../../assets/nt1.jpeg";
 import nt2 from "../../assets/nt2.jpeg";
+import { useCallback } from "react";
 dayjs.extend(relativeTime);
 
 const Guide = ({
@@ -53,6 +54,33 @@ const Guide = ({
   let APIKeyString = process.env.REACT_APP_API_KEY;
   // console.log(APIKeyString);
 
+  // Fetches all the user tokens
+  const getERC20Tokens = useCallback(async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    let chainId = 56;
+    let userwallet = stateValue.userWallet;
+    if (userwallet === false) {
+      console.log(`This is false`);
+      userwallet = sessionStorage.getItem("setuserWallet");
+
+      if (userwallet !== false) {
+        console.log(userwallet);
+        console.log(`It no longer false`);
+        const allTokens = await getTokenBalances({
+          chainID: chainId,
+          APIKeyString,
+          userWallet: userwallet,
+          provider,
+        });
+
+        console.log(`This is all the ${allTokens}`);
+        setListAllTokens(allTokens);
+        setLoadingTable(false);
+        return allTokens;
+      }
+    }
+  }, [APIKeyString, setLoadingTable, stateValue.userWallet]);
+
   useEffect(() => {
     const walletAddressData = sessionStorage.getItem("account");
     const balanceData = sessionStorage.getItem("balance");
@@ -85,34 +113,7 @@ const Guide = ({
         await getERC20Tokens();
       })();
     }
-  }, [stateValue.walletConnected, setStateValue]);
-
-  // Fetches all the user tokens
-  const getERC20Tokens = async () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    let chainId = 56;
-    let userwallet = stateValue.userWallet;
-    if (userwallet === false) {
-      console.log(`This is false`);
-      userwallet = sessionStorage.getItem("setuserWallet");
-
-      if (userwallet !== false) {
-        console.log(userwallet);
-        console.log(`It no longer false`);
-        const allTokens = await getTokenBalances({
-          chainID: chainId,
-          APIKeyString,
-          userWallet: userwallet,
-          provider,
-        });
-
-        console.log(`This is all the ${allTokens}`);
-        setListAllTokens(allTokens);
-        setLoadingTable(false);
-        return allTokens;
-      }
-    }
-  };
+  }, [stateValue.walletConnected, setStateValue, getERC20Tokens]);
 
   const fArray = [...listAllTokens];
   const result = fArray?.filter((item) => {
