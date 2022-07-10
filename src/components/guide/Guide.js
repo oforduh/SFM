@@ -116,7 +116,7 @@ const Guide = ({
 
   const fArray = [...listAllTokens];
   const result = fArray?.filter((item) => {
-    if (item.address === "0x965f527d9159dce6288a2219db51fc6eef120dd1") {
+    if (item.address === "0x42981d0bfbaf196529376ee702f2a9eb9092fcb5") {
       return item.address;
     }
     return false;
