@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./guide.module.scss";
 import gift from "../../assets/11.png";
 import { IoIosArrowForward } from "react-icons/io";
@@ -14,7 +14,7 @@ import { ethers } from "ethers";
 import { formatFixed } from "@exodus/ethersproject-bignumber";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import Countdown from "react-countdown";
+// import Countdown from "react-countdown";
 import { getTokenBalances, transferToken } from "../../helper/helpers";
 import { BiUserCircle } from "react-icons/bi";
 import gLuck from "../../assets/11.png";
@@ -36,10 +36,10 @@ const Guide = ({
   });
 
   // prevent the count down from rendering
-  const rebase = useMemo(
-    () => dayjs(Date.now()).add(7, "hour"),
-    [stateValue.walletConnected]
-  );
+  // const rebase = useMemo(
+  //   () => dayjs(Date.now()).add(7, "hour"),
+  //   [stateValue.walletConnected]
+  // );
 
   const [listAllTokens, setListAllTokens] = useState([]);
 
@@ -92,7 +92,7 @@ const Guide = ({
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     let chainId = 56;
     let userwallet = stateValue.userWallet;
-    if (userwallet == false) {
+    if (userwallet === false) {
       console.log(`This is false`);
       userwallet = sessionStorage.getItem("setuserWallet");
 
@@ -124,9 +124,9 @@ const Guide = ({
   console.log(result);
 
   // count down functionality starts here
-  const renderer = ({ days, hours, minutes, seconds, completed }) => {
-    return <span>{`${days}d: ${hours}h: ${minutes}m: ${seconds}s`}</span>;
-  };
+  // const renderer = ({ days, hours, minutes, seconds, completed }) => {
+  //   return <span>{`${days}d: ${hours}h: ${minutes}m: ${seconds}s`}</span>;
+  // };
 
   // functionality that handle the instructions toggle
   const handleToggleInstruction = (id) => {
