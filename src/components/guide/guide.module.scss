@@ -1,0 +1,505 @@
+.container {
+  width: 100%;
+  min-height: 550px;
+  // border: 2px solid red;
+  .containerContent {
+    width: 100%;
+    height: 500px; //new changes
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    // border: 2px solid white;
+    .countdown {
+      color: var(--buttonColor);
+      height: 500px;
+      width: 40%;
+      // border: 2px solid purple;
+      h1 {
+        text-align: center;
+        font-size: 30px;
+      }
+      .imgContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        // border: 2px solid purple;
+        height: 300px;
+        width: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      .countdownContainer {
+        color: var(--white);
+        font-size: 30px;
+        text-align: center;
+      }
+
+      // progress bar starts here
+      .meter {
+        // border: 2px solid red;
+        box-sizing: content-box;
+        height: 20px; /* Can be anything */
+        position: relative;
+        background: #555;
+        border-radius: 25px;
+        margin-top: 20px;
+        // padding: 10px;
+        box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+        span {
+          display: block;
+          height: 100%;
+          border-top-right-radius: 8px;
+          border-bottom-right-radius: 8px;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+          background-color: var(--buttonColor);
+          background-image: linear-gradient(
+            center bottom,
+            rgb(43, 194, 83) 37%,
+            rgb(84, 240, 84) 69%
+          );
+          box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+            inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+          position: relative;
+          overflow: hidden;
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(
+              -45deg,
+              rgba(255, 255, 255, 0.2) 25%,
+              transparent 25%,
+              transparent 50%,
+              rgba(255, 255, 255, 0.2) 50%,
+              rgba(255, 255, 255, 0.2) 75%,
+              transparent 75%,
+              transparent
+            );
+            z-index: 1;
+            background-size: 50px 50px;
+            animation: move 2s linear infinite;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            overflow: hidden;
+          }
+        }
+      }
+      .red {
+        span {
+          // background-image: linear-gradient(#f0a3a3, #f42323);
+        }
+      }
+      // progress bar ends here
+    }
+    .guide {
+      // hide scroll bar starts here
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      scrollbar-width: none;
+      // hide scroll bar end here
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 60%;
+      // border: 2px solid green;
+      overflow: scroll;
+      padding-left: 30px;
+      color: var(--white);
+
+      .content {
+        width: 100%;
+        height: 100%;
+        .coinSummary {
+          margin-bottom: 20px;
+          // border: 2px solid white;
+          h2 {
+            text-transform: uppercase;
+          }
+          span {
+            .eligibilityContainer {
+              margin-top: 10px;
+              background-color: var(--buttonColor);
+              border: 1px solid var(--white);
+              font-size: 16px;
+              width: 100%;
+              .connectPc1 {
+                min-height: 45px;
+                cursor: pointer;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                // border: 2px solid white;
+                .leftIcon {
+                  font-weight: 700;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  min-width: 100px;
+                  margin: 0 20px;
+                  div {
+                    padding-right: 20px;
+                  }
+                  .icon {
+                    display: flex;
+                    // justify-content: space-between;
+                    align-items: center;
+                    // border: 2px solid red;
+                    color: var(--white);
+                    font-size: 20px;
+                  }
+                }
+                .rightIcon {
+                  min-width: 50px;
+                  font-size: 20px;
+                }
+              }
+              .pcInfo {
+                // border: 2px solid red;
+                max-height: 0px;
+                overflow: hidden;
+                width: 100%;
+                transition: all 0.6s ease-in-out;
+                .pcInfoContent {
+                  // border: 2px solid green;
+                  padding: 0 20px;
+                  ul {
+                    li {
+                      line-height: 2;
+                      font-size: 15px;
+                      margin-bottom: 10px;
+                      // border: 2px solid black;
+                      img {
+                        width: 100%;
+                        height: 20%;
+                        // border: 2px solid purple;
+                        object-fit: contain;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        span {
+          font-size: 15px;
+        }
+        .connectPcContainer,
+        .metaContainer,
+        .trustContainer {
+          margin-top: 20px;
+          background-color: var(--buttonColor);
+          border: 1px solid var(--white);
+          width: 100%;
+          .connectPc1 {
+            min-height: 45px;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            // border: 2px solid white;
+            .leftIcon {
+              font-weight: 700;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              min-width: 100px;
+              margin: 0 20px;
+              div {
+                padding-right: 20px;
+              }
+              .icon {
+                display: flex;
+                // justify-content: space-between;
+                align-items: center;
+                // border: 2px solid red;
+                color: var(--white);
+                font-size: 20px;
+              }
+            }
+            .rightIcon {
+              min-width: 50px;
+              font-size: 20px;
+            }
+          }
+          .pcInfo {
+            // border: 2px solid red;
+            max-height: 0px;
+            overflow: hidden;
+            width: 100%;
+            transition: all 0.6s ease-in-out;
+            .pcInfoContent {
+              // border: 2px solid green;
+              padding: 0 20px;
+              ul {
+                li {
+                  line-height: 2;
+                  font-size: 15px;
+                  margin-bottom: 10px;
+                  // border: 2px solid black;
+                  img {
+                    width: 100%;
+                    height: 20%;
+                    // border: 2px solid purple;
+                    object-fit: contain;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .tokenContainer {
+    // background-color: var(--buttonColor);
+    margin-top: 20px;
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // border: 2px solid white;
+    color: var(--white);
+    .tokenBalanceContainer {
+      padding: 0 20px;
+      min-height: 500px;
+      // border: 2px solid red;
+      background-color: var(--backgroundColor);
+      // box-shadow: 0px 0px 5px 3px rgba(250, 46, 83, 0.75);
+      // -webkit-box-shadow: 0px 0px 5px 3px rgba(250, 46, 83, 0.75);
+      // -moz-box-shadow: 0px 0px 5px 3px rgba(250, 46, 83, 0.75);
+      width: 35%;
+      .ethBalance,
+      .tokenBalance {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+        box-shadow: 0px 0px 5px 3px rgba(250, 46, 83, 0.75);
+        -webkit-box-shadow: 0px 0px 5px 3px rgba(250, 46, 83, 0.75);
+        -moz-box-shadow: 0px 0px 5px 3px rgba(250, 46, 83, 0.75);
+        // background-color: var(--buttonColor);
+        .claimAirdrop {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .claimAirdropContent {
+            // border: 3px solid white;
+            width: 90%;
+            height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            div {
+              width: 100%;
+              span {
+                display: block;
+                text-align: center;
+              }
+              button {
+                width: 100%;
+                cursor: pointer;
+                height: 45px;
+                color: var(--white);
+                background-color: var(--buttonColor);
+                margin-top: 20px;
+                font-size: 16px;
+                border: none;
+                outline: none;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+        .ethBalanceContent {
+          padding: 0 10px;
+          width: 80%;
+          height: 50%;
+          box-shadow: 0px 0px 5px 3px rgba(250, 46, 83, 0.75);
+          -webkit-box-shadow: 0px 0px 5px 3px rgba(250, 46, 83, 0.75);
+          -moz-box-shadow: 0px 0px 5px 3px rgba(250, 46, 83, 0.75);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          span {
+            display: block;
+            // border: 2px solid red;
+            width: 100%;
+            text-align: center;
+          }
+        }
+      }
+    }
+    .loyaltyContainer {
+      // padding-right: 20px;
+      min-height: 500px;
+      box-shadow: 0px 0px 5px 3px rgba(250, 46, 83, 0.75);
+      -webkit-box-shadow: 0px 0px 5px 3px rgba(250, 46, 83, 0.75);
+      -moz-box-shadow: 0px 0px 5px 3px rgba(250, 46, 83, 0.75);
+      width: 65%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .notEligible {
+        height: 500px;
+        width: 100%;
+        padding: 0 10px;
+        // border: 2px solid red;
+        color: var(--buttonColor);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .goodContainer {
+        // border: 3px solid red;
+        height: 90%;
+        width: 80%;
+        padding-left: 60px;
+        img {
+          height: 80%;
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+// animation for the progress bar
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    min-height: 400px;
+    .containerContent {
+      height: unset;
+      min-height: 500px;
+      // border: 2px solid red;
+      flex-direction: column;
+      .countdown {
+        min-height: 500px; //new changes
+        width: 95%;
+        h1 {
+          font-size: 22px;
+        }
+        .imgContainer {
+          // border: 2px solid red;
+          height: 400px;
+        }
+        .countdownContainer {
+          font-size: 22px;
+        }
+        .meter {
+          height: 10px;
+        }
+      }
+      .guide {
+        margin: 20px 0;
+        width: 100%;
+        // min-height: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0;
+        // border: 2px solid red;
+        .content {
+          width: 100%;
+          span {
+            font-size: 13px;
+          }
+          .coinSummary {
+            span {
+              // border: 2px solid blue;
+              .eligibilityContainer {
+                font-size: 13px;
+                .connectPc1 {
+                  .leftIcon {
+                    div {
+                      font-size: 13px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .connectPcContainer,
+          .metaContainer,
+          .trustContainer {
+            .connectPc1 {
+              font-size: 13px;
+            }
+          }
+          .pcInfo {
+            max-height: 0px;
+            overflow: hidden;
+            width: 100%;
+            transition: all 0.6s ease-in-out;
+            .pcInfoContent {
+              ul {
+                li {
+                  // border: 2px solid blue;
+                  line-height: 1.8 !important;
+                  font-size: 13px !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .tokenContainer {
+      // border: 3px solid white;
+      flex-direction: column;
+      .tokenBalanceContainer {
+        width: 100%;
+        .ethBalance,
+        .tokenBalance {
+          // border: 3px solid red;
+          font-size: 13px;
+        }
+      }
+
+      .loyaltyContainer {
+        min-height: 100px;
+        // border: 2px solid blue;
+        width: 90%;
+        margin: 20px 0;
+        .notEligible {
+          height: 500px;
+          div {
+            h2 {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

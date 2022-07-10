@@ -1,0 +1,91 @@
+.container {
+  background-color: var(--dark);
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid var(--buttonColor);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .logoContainer {
+    min-width: 150px;
+    height: 90%;
+    // border: 2px solid blue;
+    color: var(--buttonColor);
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logoContent {
+      padding-left: 10px;
+      width: 40%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      //   border: 2px solid blue;
+      img {
+        height: 80%;
+        width: 50px;
+        object-fit: contain;
+      }
+    }
+    .logoText {
+      //   border: 2px solid red;
+      width: 50%;
+      font-size: 22px;
+    }
+  }
+  .buttonContainer {
+    height: 80%;
+    min-width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
+    // border: 2px solid purple;
+    button {
+      background-color: var(--buttonColor);
+      border: none;
+      font-family: "Poppins";
+      height: 80%;
+      min-width: inherit;
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 400;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    .logoContainer {
+      .logoContent {
+        // border: 2px solid red;
+        width: 50px;
+        img {
+          padding-left: 0;
+          height: 30px;
+          width: 30px;
+        }
+      }
+      .logoText {
+        // border: 2px solid red;
+        width: 100px;
+        font-size: 16px;
+      }
+    }
+    .buttonContainer {
+      height: 100%;
+      min-width: 100px;
+
+      padding-right: 0;
+      // border: 2px solid purple;
+      button {
+        height: 65%;
+        min-width: 110px;
+        color: var(--white);
+        font-size: 12px;
+      }
+    }
+  }
+}

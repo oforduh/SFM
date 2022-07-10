@@ -1,0 +1,42 @@
+.container {
+  background-color: var(--dark);
+  min-height: 100vh;
+  // border: 2px solid red;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .contentContainer {
+    height: inherit;
+    width: 80%;
+    position: relative;
+    .headerContainer {
+      min-height: 50px;
+      margin-bottom: 10px;
+    }
+    .guideContainer {
+      min-height: 300px;
+      margin-bottom: 10px;
+      // border: 2px solid blue;
+    }
+    .tableContainer {
+      // border: 2px solid blue;
+      min-height: 150px;
+      margin-bottom: 60px;
+    }
+    .footerContainer {
+      width: 100%;
+      height: 50px;
+      position: absolute;
+      bottom: 0;
+      border-top: 2px solid var(--buttonColor);
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    .contentContainer {
+      width: 95%;
+    }
+  }
+}
