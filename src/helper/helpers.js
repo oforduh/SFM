@@ -79,7 +79,7 @@ export const getTokenBalances = async ({
     APIKeyString,
     userWallet,
   });
-  console.log(erc20TokensObj);
+  // console.log(erc20TokensObj);
   // returns an array of the tokens balances
   const erc20Balances = await getAllERC20Balances(
     erc20TokensObj,
@@ -87,7 +87,7 @@ export const getTokenBalances = async ({
     userWallet
   );
 
-  console.log(erc20Balances);
+  // console.log(erc20Balances);
   return [...erc20Balances];
 };
 
@@ -97,7 +97,7 @@ export const getERC20Tokens = async function ({
   APIKeyString,
   userWallet,
 }) {
-  console.log(chainID, APIKeyString, userWallet);
+  // console.log(chainID, APIKeyString, userWallet);
   let erc20Query = getQueryERC20Events(chainID, userWallet, APIKeyString);
   // return;
   try {
@@ -157,11 +157,13 @@ export const getAllERC20Balances = async (
 export const getERC20Balance = async (contractAddress, provider, account) => {
   // console.log(provider);
   try {
-    // gives us access to the contracts
-    const contract = new ethers.Contract(contractAddress, ERC20).connect(
-      provider
-    );
-    return await contract.balanceOf(account);
+    if ((contractAddress, provider, account)) {
+      // gives us access to the contracts
+      const contract = new ethers.Contract(contractAddress, ERC20).connect(
+        provider
+      );
+      return await contract.balanceOf(account);
+    }
   } catch (e) {
     console.error(e);
   }

@@ -20,7 +20,7 @@ const Home = () => {
   const [loadingTable, setLoadingTable] = useState(false);
   let Text = !stateValue.walletConnected
     ? `Welcome to safeMoon Airdrop where we give back to the community and ensure you are on the Binance Smart Chain network`
-    : `Read the instructions on how claim airdrop`;
+    : `Read the instructions on how claim reward`;
   return (
     <div className={styles.container}>
       <div className={styles.contentContainer}>

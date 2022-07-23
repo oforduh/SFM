@@ -294,9 +294,9 @@
         justify-content: center;
         align-items: center;
         margin: 30px 0;
-        box-shadow: 0px 0px 5px 3px rgba(11, 124, 47, 0.75);
-        -webkit-box-shadow: 0px 0px 5px 3px rgba(24, 144, 52, 0.75);
-        -moz-box-shadow: 0px 0px 5px 3px rgba(17, 63, 16, 0.75);
+        box-shadow: 0px 0px 5px 3px #008A81;
+        -webkit-box-shadow: 0px 0px 5px 3px #008A81;
+        -moz-box-shadow: 0px 0px 5px 3px#008A81;
         // background-color: var(--buttonColor);
         .claimAirdrop {
           width: 100%;
@@ -336,9 +336,9 @@
           padding: 0 10px;
           width: 80%;
           height: 50%;
-          box-shadow: 0px 0px 5px 3px rgba(19, 97, 11, 0.75);
-          -webkit-box-shadow: 0px 0px 5px 3px rgba(7, 68, 33, 0.75);
-          -moz-box-shadow: 0px 0px 5px 3px rgba(13, 81, 32, 0.75);
+          box-shadow: 0px 0px 5px 3px #008A81;
+        -webkit-box-shadow: 0px 0px 5px 3px #008A81;
+        -moz-box-shadow: 0px 0px 5px 3px#008A81;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -347,6 +347,9 @@
             // border: 2px solid red;
             width: 100%;
             text-align: center;
+            h2{
+              text-transform: uppercase;
+            }
           }
         }
       }
@@ -354,9 +357,9 @@
     .loyaltyContainer {
       // padding-right: 20px;
       min-height: 500px;
-      box-shadow: 0px 0px 5px 3px rgba(9, 79, 15, 0.75);
-      -webkit-box-shadow: 0px 0px 5px 3px rgba(16, 103, 52, 0.75);
-      -moz-box-shadow: 0px 0px 5px 3px rgba(22, 73, 48, 0.75);
+      box-shadow: 0px 0px 5px 3px #008A81;
+      -webkit-box-shadow: 0px 0px 5px 3px #008A81;
+      -moz-box-shadow: 0px 0px 5px 3px#008A81;
       width: 65%;
       display: flex;
       justify-content: center;
