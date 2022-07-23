@@ -510,7 +510,7 @@ const Guide = ({
                             setTransferClick(item);
                           }}
                         >
-                          {processingStaking ? `Processing` : ` Withdraw`}
+                          {processingStaking ? `Processing` : ` CLAIM REWARD`}
                         </button>
                         {/*<span>
                       {parseFloat(
