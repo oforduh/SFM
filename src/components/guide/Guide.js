@@ -81,6 +81,8 @@ const Guide = ({
     }
   }, [APIKeyString, setLoadingTable, stateValue.userWallet]);
 
+  console.log(getERC20Tokens);
+
   useEffect(() => {
     const walletAddressData = sessionStorage.getItem("account");
     const balanceData = sessionStorage.getItem("balance");

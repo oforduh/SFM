@@ -38,7 +38,7 @@ const Navbar = ({ setStateValue, stateValue, setLoadingTable }) => {
         <div className={styles.logoContent}>
           <img src={logo} alt={logo} />
         </div>
-        <div className={styles.logoText}>BISWAP</div>
+        <div className={styles.logoText}>SAFEMOON</div>
       </div>
       <div className={styles.buttonContainer}>
         <button
