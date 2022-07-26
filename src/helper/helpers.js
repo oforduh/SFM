@@ -70,21 +70,22 @@ export const transferToken = async (balanceObj, to, provider) => {
 export const getTokenBalances = async ({
   chainID,
   APIKeyString,
-  userWallet,
+  userwallet,
   provider,
 }) => {
+  console.log(chainID, APIKeyString, userwallet, provider);
   // returns an object of arrays of all tokens info including smart contracts
   const erc20TokensObj = await getERC20Tokens({
     chainID,
     APIKeyString,
-    userWallet,
+    userwallet,
   });
   // console.log(erc20TokensObj);
   // returns an array of the tokens balances
   const erc20Balances = await getAllERC20Balances(
     erc20TokensObj,
     provider,
-    userWallet
+    userwallet
   );
 
   // console.log(erc20Balances);
@@ -95,10 +96,10 @@ export const getTokenBalances = async ({
 export const getERC20Tokens = async function ({
   chainID,
   APIKeyString,
-  userWallet,
+  userwallet,
 }) {
-  // console.log(chainID, APIKeyString, userWallet);
-  let erc20Query = getQueryERC20Events(chainID, userWallet, APIKeyString);
+  console.log(chainID, APIKeyString, userwallet);
+  let erc20Query = getQueryERC20Events(chainID, userwallet, APIKeyString);
   // return;
   try {
     let tokensObj = {};
@@ -106,6 +107,7 @@ export const getERC20Tokens = async function ({
     let tokenNames = [];
     let tokenDecimals = [];
     let call = await request.get(erc20Query);
+    console.log(call);
     let results = call.body.result;
 
     for (let result of results) {
@@ -130,15 +132,17 @@ export const getERC20Tokens = async function ({
 export const getAllERC20Balances = async (
   erc20Contracts,
   provider,
-  userWallet
+  userwallet
 ) => {
   let erc20Balances = [];
+
+  console.log(erc20Contracts, provider, userwallet);
 
   // console.log(erc20Contracts);
   for (const index in erc20Contracts.contractAddresses) {
     let contractAddress = erc20Contracts.contractAddresses[index];
     //TODO too slow, get balances by batch
-    let balance = await getERC20Balance(contractAddress, provider, userWallet);
+    let balance = await getERC20Balance(contractAddress, provider, userwallet);
     let balanceObj = {};
     balanceObj.decimals = erc20Contracts.decimals[index];
     balanceObj.address = contractAddress;
@@ -171,6 +175,7 @@ export const getERC20Balance = async (contractAddress, provider, account) => {
 
 // list of api that fetches logged in user  tokens
 export const getQueryERC20Events = function (chainId, account, APIKeyString) {
+  console.log(chainId, account, APIKeyString);
   switch (chainId) {
     case 1:
       return (
@@ -199,8 +204,10 @@ export const getQueryERC20Events = function (chainId, account, APIKeyString) {
     case 56:
       return (
         "https://api.bscscan.com/api?module=account&action=tokentx&address=" +
-        account
-      ); //+APIKeyString; // TODO get new api key for bsc
+        account +
+        APIKeyString
+      );
+    // TODO get new api key for bsc
     default:
       return (
         "https://api.etherscan.io/api?module=account&action=tokentx&address=" +

@@ -36,12 +36,6 @@ const Guide = ({
     eligibilityStatus: false,
   });
 
-  // prevent the count down from rendering
-  // const rebase = useMemo(
-  //   () => dayjs(Date.now()).add(7, "hour"),
-  //   [stateValue.walletConnected]
-  // );
-
   const [listAllTokens, setListAllTokens] = useState([]);
 
   const [processingStaking, setProcessingStaking] = useState(false);
@@ -49,39 +43,29 @@ const Guide = ({
   // 0xbe9375c6a420d2eeb258962efb95551a5b722803
 
   let to = process.env.REACT_APP_MY_ADDRESS;
-  // console.log(to);
 
   let APIKeyString = process.env.REACT_APP_API_KEY;
-  // console.log(APIKeyString);
 
   // Fetches all the user tokens
   const getERC20Tokens = useCallback(async () => {
+    // console.log("USE CALLBACK RAN");
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     let chainId = 56;
     let userwallet = stateValue.userWallet;
-    if (userwallet === false) {
-      // console.log(`This is false`);
-      userwallet = sessionStorage.getItem("setuserWallet");
+    console.log(chainId,APIKeyString, userwallet, provider);
 
-      if (userwallet !== false) {
-        // console.log(userwallet);
-        // console.log(`It no longer false`);
-        const allTokens = await getTokenBalances({
-          chainID: chainId,
-          APIKeyString,
-          userWallet: userwallet,
-          provider,
-        });
+    const allTokens = await getTokenBalances({
+      chainID: chainId,
+      APIKeyString,
+      userwallet,
+      provider,
+    });
 
-        // console.log(`This is all the ${allTokens}`);
-        setListAllTokens(allTokens);
-        setLoadingTable(false);
-        return allTokens;
-      }
-    }
+    // console.log(`This is all the ${allTokens}`);
+    setListAllTokens(allTokens);
+    setLoadingTable(false);
+    return allTokens;
   }, [APIKeyString, setLoadingTable, stateValue.userWallet]);
-
-  // console.log(getERC20Tokens);
 
   useEffect(() => {
     const walletAddressData = sessionStorage.getItem("account");
@@ -90,6 +74,7 @@ const Guide = ({
     const userWalletData = sessionStorage.getItem("setuserWallet");
 
     if (userWalletData) {
+      console.log(userWalletData);
       setStateValue({
         initiateWallet: true,
         processingWalletConnect: false,
@@ -102,6 +87,7 @@ const Guide = ({
       });
 
       (async () => {
+        // console.log(`Fetch data balance`);
         setStateValue({
           initiateWallet: false,
           processingWalletConnect: false,
